@@ -7,27 +7,37 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import Layout from "../components/Layout";
 import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
+import { PostContextProvider } from "../components/context/PostContext";
 
 const clientSideEmotionCache = createEmotionCache();
 
 interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache;
+   emotionCache?: EmotionCache;
 }
 
 export default function MyApp(props: MyAppProps) {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-  return (
-    <CacheProvider value={emotionCache}>
-      <Head>
-        <meta name='viewport' content='initial-scale=1, width=device-width' />
-      </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
-    </CacheProvider>
-  );
+   const {
+      Component,
+      emotionCache = clientSideEmotionCache,
+      pageProps,
+   } = props;
+   return (
+      <CacheProvider value={emotionCache}>
+         <Head>
+            <meta
+               name='viewport'
+               content='initial-scale=1, width=device-width'
+            />
+         </Head>
+         <ThemeProvider theme={theme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <PostContextProvider>
+               <Layout>
+                  <Component {...pageProps} />
+               </Layout>
+            </PostContextProvider>
+         </ThemeProvider>
+      </CacheProvider>
+   );
 }
