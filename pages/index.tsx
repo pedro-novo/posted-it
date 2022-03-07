@@ -1,17 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Sidebar from "../components/Sidebar";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { usePostContext } from "../components/context/PostContext";
+import { Box, Container, useTheme, useMediaQuery, Grid } from "@mui/material";
+import Body from "../components/Body";
 
 const Home: NextPage = () => {
-   const { posts } = usePostContext();
+   const theme = useTheme();
+   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
    return (
-      <div>
-         {posts.map((post) => (
-            <div>{post.title}</div>
-         ))}
-      </div>
+      <Container>
+         {isMobile ? (
+            <Box>
+               <Body />
+            </Box>
+         ) : (
+            <Grid container spacing={2}>
+               <Grid item sm={8}>
+                  <Body />
+               </Grid>
+               <Grid item sm={4}>
+                  <Sidebar />
+               </Grid>
+            </Grid>
+         )}
+      </Container>
    );
 };
 
