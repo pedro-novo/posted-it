@@ -13,8 +13,15 @@ interface LikesAndDislikesProps {
 const LikesDislikes = ({ postID, likes, dislikes }: LikesAndDislikesProps) => {
    return (
       <Box display='flex'>
-         <Box marginRight={1}>
-            <Typography variant='subtitle2'>{`Up: ${likes}`}</Typography>
+         <Box display='flex' alignItems='center'>
+            <Box marginRight={1}>
+               <Typography variant='subtitle2'>{`Up: ${likes}`}</Typography>
+            </Box>
+            <Box marginRight={1}>
+               <Typography variant='subtitle2'>{`Down: ${dislikes}`}</Typography>
+            </Box>
+         </Box>
+         <Box>
             <IconButton
                color='secondary'
                component='span'
@@ -24,9 +31,6 @@ const LikesDislikes = ({ postID, likes, dislikes }: LikesAndDislikesProps) => {
             >
                <ThumbUpIcon />
             </IconButton>
-         </Box>
-         <Box>
-            <Typography variant='subtitle2'>{`Down: ${dislikes}`}</Typography>
             <IconButton
                color='secondary'
                component='span'

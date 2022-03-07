@@ -2,7 +2,14 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Box, Container, useTheme, useMediaQuery, Grid } from "@mui/material";
+import {
+   Box,
+   Container,
+   useTheme,
+   useMediaQuery,
+   Grid,
+   Divider,
+} from "@mui/material";
 import Body from "../components/Body";
 
 const Home: NextPage = () => {
@@ -20,6 +27,7 @@ const Home: NextPage = () => {
                <Grid item sm={8}>
                   <Body />
                </Grid>
+               <Divider orientation='vertical' variant='middle' flexItem />
                <Grid item sm={4}>
                   <Sidebar />
                </Grid>
