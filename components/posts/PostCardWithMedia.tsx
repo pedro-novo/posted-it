@@ -7,7 +7,7 @@ interface PostCardWithMediaProps {
 }
 
 const PostCardWithMedia = ({ post }: PostCardWithMediaProps) => {
-   return <Box>{post.title}</Box>;
+   return <Box padding={2}>{post.title}</Box>;
 };
 
 export default PostCardWithMedia;

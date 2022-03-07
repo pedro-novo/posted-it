@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { usePostContext } from "../components/context/PostContext";
 import PostCard from "./posts/PostCard";
 import PostCardWithMedia from "./posts/PostCardWithMedia";
@@ -14,7 +14,7 @@ const Body: FC = () => {
          justifyContent='center'
       >
          {posts.map((post) => (
-            <Box>
+            <Box key={post.id}>
                {post.image ? (
                   <PostCardWithMedia post={post} />
                ) : (

@@ -8,15 +8,20 @@ const Navbar: FC = () => {
 
    return (
       <>
-         <Box position='relative' height='100px' sx={{ background: "#EEEDDE" }}>
+         <Box position='relative' height='100px' sx={{ background: "#fff" }}>
             <Box position='absolute' left='0%'>
                <Link href='/'>
                   <img src='/logo/Asset_1.png' style={{ height: "100px" }} />
                </Link>
             </Box>
             <Box position='absolute' left='50%' top='25%'>
-               <Button onClick={() => router.push("/new-post")}>
-                  New Post
+               <Button
+                  variant='contained'
+                  onClick={() => router.push("/new-post")}
+               >
+                  <Typography variant='h6' color='#EEEDDE'>
+                     New Post
+                  </Typography>
                </Button>
             </Box>
          </Box>
