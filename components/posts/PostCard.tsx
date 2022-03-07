@@ -2,9 +2,8 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { PostType } from "../context/PostContext";
 import Tags from "./tags/Tags";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import TextPost from "./text/TextPost";
+import LikesDislikes from "./likes-and-dislikes/LikesDislikes";
 
 interface PostCardProps {
    post: PostType;
@@ -31,7 +30,12 @@ const PostCard = ({ post }: PostCardProps) => {
             {post.title}
          </Typography>
          {post.text && <TextPost text={post.text} />}
-         <Box></Box>
+         <LikesDislikes
+            postID={post.id}
+            likes={post.likes}
+            dislikes={post.dislikes}
+         />
+         <Typography variant='caption'>{`Comments: ${post.comments?.length}`}</Typography>
       </Box>
    );
 };
