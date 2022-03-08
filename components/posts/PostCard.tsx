@@ -37,11 +37,7 @@ const PostCard = ({ post }: PostCardProps) => {
             >{`Comments: ${post.comments?.length}`}</Typography>
          </Box>
          <Box>
-            <LikesDislikes
-               postID={post.id}
-               likes={post.likes}
-               dislikes={post.dislikes}
-            />
+            <LikesDislikes postID={post.id} votes={post.votes} />
          </Box>
       </Box>
    );

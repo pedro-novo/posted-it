@@ -1,4 +1,4 @@
-import { onSnapshot } from "firebase/firestore";
+import { FieldValue, onSnapshot } from "firebase/firestore";
 import React, {
    useState,
    useEffect,
@@ -6,7 +6,7 @@ import React, {
    SetStateAction,
    useContext,
 } from "react";
-import { colRef } from "../../firebase-config";
+import { q } from "../../firebase-config";
 
 export type PostType = {
    id: string;
@@ -15,9 +15,9 @@ export type PostType = {
    link?: string;
    text?: string;
    topics: string[];
-   likes: number;
-   dislikes: number;
+   votes: number;
    comments?: string[];
+   createdAt: FieldValue;
 };
 
 export type PostsType = PostType[];
@@ -40,7 +40,7 @@ export const PostContextProvider = ({ children }: PostContextProviderProps) => {
    const [posts, postsSet] = useState<PostsType>([]);
 
    useEffect(() => {
-      onSnapshot(colRef, (snapshot) => {
+      onSnapshot(q, (snapshot) => {
          let array: PostsType = [];
          snapshot.docs.forEach((doc) => {
             array.push({ ...doc.data(), id: doc.id } as PostType);

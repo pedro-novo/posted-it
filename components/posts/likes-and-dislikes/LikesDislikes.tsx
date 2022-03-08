@@ -2,23 +2,19 @@ import React from "react";
 import { Box, IconButton, Typography } from "@mui/material";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
-import { updateLikes, updateDislikes } from "../../../firebase-config";
+import { updateUpVotes, updateDownVotes } from "../../../firebase-config";
 
 interface LikesAndDislikesProps {
    postID: string;
-   likes: number;
-   dislikes: number;
+   votes: number;
 }
 
-const LikesDislikes = ({ postID, likes, dislikes }: LikesAndDislikesProps) => {
+const LikesDislikes = ({ postID, votes }: LikesAndDislikesProps) => {
    return (
       <Box display='flex'>
          <Box display='flex' alignItems='center'>
             <Box marginRight={1}>
-               <Typography variant='subtitle2'>{`Up: ${likes}`}</Typography>
-            </Box>
-            <Box marginRight={1}>
-               <Typography variant='subtitle2'>{`Down: ${dislikes}`}</Typography>
+               <Typography variant='subtitle2'>{`Votes: ${votes}`}</Typography>
             </Box>
          </Box>
          <Box>
@@ -26,7 +22,7 @@ const LikesDislikes = ({ postID, likes, dislikes }: LikesAndDislikesProps) => {
                color='secondary'
                component='span'
                onClick={() => {
-                  updateLikes(postID);
+                  updateUpVotes(postID);
                }}
             >
                <ThumbUpIcon />
@@ -35,7 +31,7 @@ const LikesDislikes = ({ postID, likes, dislikes }: LikesAndDislikesProps) => {
                color='secondary'
                component='span'
                onClick={() => {
-                  updateDislikes(postID);
+                  updateDownVotes(postID);
                }}
             >
                <ThumbDownAltIcon />
