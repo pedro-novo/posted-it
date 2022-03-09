@@ -2,13 +2,13 @@ import React, { FC } from "react";
 import { Box, Typography } from "@mui/material";
 
 interface TagsProps {
-   tags: string[];
+   tags: string[] | undefined;
 }
 
 const Tags = ({ tags }: TagsProps) => {
    return (
       <Box display='flex'>
-         {tags.map((tag, index) => (
+         {tags?.map((tag, index) => (
             <Box
                key={index}
                padding={0.5}
