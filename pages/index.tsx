@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/sidebar/Sidebar";
 import type { NextPage } from "next";
 import Head from "next/head";
 import {
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
    return (
       <Container>
          {isMobile ? (
-            <Box>
+            <Box display='flex' justifyContent='center' alignItems='center'>
                <Body />
             </Box>
          ) : (
@@ -27,7 +27,6 @@ const Home: NextPage = () => {
                <Grid item sm={8}>
                   <Body />
                </Grid>
-               <Divider orientation='vertical' variant='middle' flexItem />
                <Grid item sm={4}>
                   <Sidebar />
                </Grid>

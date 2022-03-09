@@ -15,7 +15,7 @@ const PostCard = ({ post }: PostCardProps) => {
          key={post.id}
          marginBottom={2}
          padding={2}
-         width='55vw'
+         width='100%'
          borderRadius={1}
          sx={{ border: "1px solid #8F8F8F", background: "#79B4B7" }}
       >

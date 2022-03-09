@@ -1,9 +1,9 @@
-export const textPostSize = (text: string) => {
+export const textPostSize = (text: string, wordsSize: number) => {
    let textAbbreviation = text.split(" ");
 
-   if (textAbbreviation.length < 8) {
+   if (textAbbreviation.length < wordsSize) {
       return text;
    } else {
-      return textAbbreviation.slice(0, 8).join(" ") + "...";
+      return textAbbreviation.slice(0, wordsSize).join(" ") + "...";
    }
 };

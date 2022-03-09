@@ -6,7 +6,7 @@ import React, {
    SetStateAction,
    useContext,
 } from "react";
-import { q } from "../../firebase-config";
+import { colRef } from "../../firebase-config";
 
 export type PostType = {
    id: string;
@@ -29,18 +29,23 @@ type PostContextProviderProps = {
 type PostContextType = {
    posts: PostsType;
    postsSet: React.Dispatch<SetStateAction<PostsType>>;
+   recentPosts: PostsType;
+   recentPostsSet: React.Dispatch<SetStateAction<PostsType>>;
 };
 
 const PostContext = createContext<PostContextType>({
    posts: [],
    postsSet: () => undefined,
+   recentPosts: [],
+   recentPostsSet: () => undefined,
 });
 
 export const PostContextProvider = ({ children }: PostContextProviderProps) => {
    const [posts, postsSet] = useState<PostsType>([]);
+   const [recentPosts, recentPostsSet] = useState<PostsType>([]);
 
    useEffect(() => {
-      onSnapshot(q, (snapshot) => {
+      onSnapshot(colRef, (snapshot) => {
          let array: PostsType = [];
          snapshot.docs.forEach((doc) => {
             array.push({ ...doc.data(), id: doc.id } as PostType);
@@ -50,7 +55,9 @@ export const PostContextProvider = ({ children }: PostContextProviderProps) => {
    }, []);
 
    return (
-      <PostContext.Provider value={{ posts, postsSet }}>
+      <PostContext.Provider
+         value={{ posts, postsSet, recentPosts, recentPostsSet }}
+      >
          {children}
       </PostContext.Provider>
    );

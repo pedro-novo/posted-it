@@ -7,7 +7,7 @@ interface TextProps {
 }
 
 const TextPost = ({ text }: TextProps) => {
-   let textDisplay = textPostSize(text);
+   let textDisplay = textPostSize(text, 8);
 
    return (
       <Typography variant='caption' color='#041C32'>
