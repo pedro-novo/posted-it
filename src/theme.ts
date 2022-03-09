@@ -17,6 +17,11 @@ const theme = createTheme({
          default: "#EEEEEE",
       },
    },
+   typography: {
+      h4: {
+         fontWeight: 600,
+      },
+   },
 });
 
 export default theme;
