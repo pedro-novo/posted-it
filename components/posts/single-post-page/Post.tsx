@@ -6,7 +6,7 @@ import LikesDislikes from "../likes-and-dislikes/LikesDislikes";
 import { filterCurrentPost } from "../../../utils/filterCurrentPost";
 
 interface PostProps {
-   postID: string | undefined;
+   postID?: string;
 }
 
 const Post = ({ postID }: PostProps) => {

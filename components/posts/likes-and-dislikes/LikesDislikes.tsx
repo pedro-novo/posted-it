@@ -5,8 +5,8 @@ import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import { updateUpVotes, updateDownVotes } from "../../../firebase-config";
 
 interface LikesAndDislikesProps {
-   postID: string | undefined;
-   votes: number | undefined;
+   postID?: string;
+   votes?: number;
 }
 
 const LikesDislikes = ({ postID, votes }: LikesAndDislikesProps) => {
@@ -22,7 +22,7 @@ const LikesDislikes = ({ postID, votes }: LikesAndDislikesProps) => {
                color='secondary'
                component='span'
                onClick={() => {
-                  updateUpVotes(postID);
+                  updateUpVotes(postID!);
                }}
             >
                <ThumbUpIcon />
@@ -31,7 +31,7 @@ const LikesDislikes = ({ postID, votes }: LikesAndDislikesProps) => {
                color='secondary'
                component='span'
                onClick={() => {
-                  updateDownVotes(postID);
+                  updateDownVotes(postID!);
                }}
             >
                <ThumbDownAltIcon />
