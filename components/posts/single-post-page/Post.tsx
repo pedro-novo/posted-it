@@ -5,9 +5,10 @@ import Tags from "../tags/Tags";
 import LikesDislikes from "../likes-and-dislikes/LikesDislikes";
 import PostComments from "./PostComments";
 import { filterCurrentPost } from "../../../utils/filterCurrentPost";
+import CommentBox from "./CommentBox";
 
 interface PostProps {
-   postID?: string | string[] | undefined;
+   postID?: string;
 }
 
 const Post = ({ postID }: PostProps) => {
@@ -44,6 +45,12 @@ const Post = ({ postID }: PostProps) => {
             <LikesDislikes
                postID={currentPost?.id}
                votes={currentPost?.votes}
+            />
+         </Box>
+         <Box>
+            <CommentBox
+               postID={postID}
+               currentPostComments={currentPost?.comments}
             />
          </Box>
          <PostComments comments={currentPost?.comments} />

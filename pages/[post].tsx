@@ -14,12 +14,12 @@ const PostIDPage = () => {
       <Container>
          {isMobile ? (
             <Box display='flex' justifyContent='center' alignItems='center'>
-               <Post postID={post} />
+               <Post postID={post as string} />
             </Box>
          ) : (
             <Grid container spacing={2}>
                <Grid item sm={8}>
-                  <Post postID={post} />
+                  <Post postID={post as string} />
                </Grid>
                <Grid item sm={4}>
                   <Sidebar />
