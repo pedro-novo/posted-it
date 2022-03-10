@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { createPost } from "../firebase-config";
 import {
@@ -17,13 +18,8 @@ import {
    OutlinedInput,
    IconButton,
 } from "@mui/material";
-import styled from "@emotion/styled";
 import { PhotoCamera } from "@mui/icons-material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-
-const Input = styled("input")({
-   display: "none",
-});
 
 const topicsAvailable = [
    "sports",
@@ -79,6 +75,13 @@ const NewPost = () => {
 
    return (
       <Container>
+         <Head>
+            <title>Create New Post</title>
+            <meta
+               name='viewport'
+               content='initial-scale=1.0, width=device-width'
+            />
+         </Head>
          <Box marginTop={6}>
             <Typography textAlign='center' fontWeight={500} variant='h3'>
                Create a New Post
@@ -93,6 +96,7 @@ const NewPost = () => {
                   label='Post Title'
                   variant='outlined'
                   fullWidth
+                  value={title}
                   required
                   error={titleError}
                   sx={{
@@ -107,6 +111,7 @@ const NewPost = () => {
                   }}
                   label='Link'
                   variant='outlined'
+                  value={link}
                   fullWidth
                   sx={{
                      marginTop: "10px",
@@ -120,6 +125,7 @@ const NewPost = () => {
                   }}
                   label='Text'
                   variant='outlined'
+                  value={text}
                   fullWidth
                   multiline
                   rows={4}

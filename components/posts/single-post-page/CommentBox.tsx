@@ -11,9 +11,7 @@ interface CommentBoxProps {
 const CommentBox = ({ postID, currentPostComments }: CommentBoxProps) => {
    const [comment, commentSet] = useState<string>();
    const [commentError, commentErrorSet] = useState<boolean>(false);
-   const [commentsArrayToSub, commentsArrayToSubSet] = useState<string[]>(
-      currentPostComments!
-   );
+   const [commentsArrayToSub, commentsArrayToSubSet] = useState<string[]>([]);
 
    const handleSubmit = (e: any) => {
       e.preventDefault();
@@ -22,17 +20,16 @@ const CommentBox = ({ postID, currentPostComments }: CommentBoxProps) => {
       if (!comment) commentErrorSet(true);
 
       if (comment) {
-         setTimeout(() => {});
-         console.log(`comment: ${comment}`);
-         console.log(`commentsArray B4 push: ${commentsArrayToSub}`);
          commentsArrayToSub.push(comment);
-         console.log(`commentsArray After push: ${commentsArrayToSub}`);
          updateComments(postID!, commentsArrayToSub);
          commentSet("");
-         console.log(`comment after being emptied: ${comment}`);
-         console.log(`commentsArray end: ${commentsArrayToSub}`);
       }
    };
+
+   useEffect(() => {
+      commentsArrayToSubSet(currentPostComments!);
+   }, [postID]);
+
    return (
       <Box marginTop={6} display='block'>
          <form noValidate autoComplete='off' onSubmit={handleSubmit}>

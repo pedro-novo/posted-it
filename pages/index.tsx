@@ -2,14 +2,7 @@ import React from "react";
 import Sidebar from "../components/sidebar/Sidebar";
 import type { NextPage } from "next";
 import Head from "next/head";
-import {
-   Box,
-   Container,
-   useTheme,
-   useMediaQuery,
-   Grid,
-   Divider,
-} from "@mui/material";
+import { Box, Container, useTheme, useMediaQuery, Grid } from "@mui/material";
 import Body from "../components/Body";
 
 const Home: NextPage = () => {
@@ -18,6 +11,13 @@ const Home: NextPage = () => {
 
    return (
       <Container>
+         <Head>
+            <title>Posted IT</title>
+            <meta
+               name='viewport'
+               content='initial-scale=1.0, width=device-width'
+            />
+         </Head>
          {isMobile ? (
             <Box display='flex' justifyContent='center' alignItems='center'>
                <Body />

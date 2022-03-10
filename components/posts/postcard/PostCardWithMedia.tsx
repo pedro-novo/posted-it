@@ -1,17 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import { PostType } from "../context/PostContext";
-import {
-   Box,
-   Container,
-   useTheme,
-   useMediaQuery,
-   Grid,
-   Typography,
-} from "@mui/material";
-import Tags from "./tags/Tags";
-import TextPost from "./text/TextPost";
-import LikesDislikes from "./likes-and-dislikes/LikesDislikes";
+import { PostType } from "../../context/PostContext";
+import { Box, Typography } from "@mui/material";
+import Tags from "../tags/Tags";
+import TextPost from "../text/TextPost";
+import LikesDislikes from "../likes-and-dislikes/LikesDislikes";
 
 interface PostCardWithMediaProps {
    post: PostType;

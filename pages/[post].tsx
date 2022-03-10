@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { Box, Container, Grid, useMediaQuery, useTheme } from "@mui/material";
 import Sidebar from "../components/sidebar/Sidebar";
@@ -12,6 +13,13 @@ const PostIDPage = () => {
 
    return (
       <Container>
+         <Head>
+            <title>Single Post Page</title>
+            <meta
+               name='viewport'
+               content='initial-scale=1.0, width=device-width'
+            />
+         </Head>
          {isMobile ? (
             <Box display='flex' justifyContent='center' alignItems='center'>
                <Post postID={post as string} />

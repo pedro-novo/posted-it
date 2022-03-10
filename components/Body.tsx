@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { Box } from "@mui/material";
 import { usePostContext } from "../components/context/PostContext";
-import PostCard from "./posts/PostCard";
-import PostCardWithMedia from "./posts/PostCardWithMedia";
+import PostCard from "./posts/postcard/PostCard";
+import PostCardWithMedia from "./posts/postcard/PostCardWithMedia";
 
 const Body: FC = () => {
    const { posts } = usePostContext();
