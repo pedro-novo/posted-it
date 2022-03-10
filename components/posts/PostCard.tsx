@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Box, Typography, Paper } from "@mui/material";
 import { PostType } from "../context/PostContext";
 import Tags from "./tags/Tags";
@@ -19,17 +20,21 @@ const PostCard = ({ post }: PostCardProps) => {
          borderRadius={1}
          sx={{ border: "1px solid #8F8F8F", background: "#79B4B7" }}
       >
-         <Tags tags={post.topics} />
-         <Typography
-            variant='h6'
-            component='h1'
-            marginTop={1}
-            color='secondary'
-            sx={{ fontSize: "1rem" }}
-         >
-            {post.title}
-         </Typography>
-         {post.text && <TextPost text={post.text} />}
+         <Link href={`/${post.id}`}>
+            <Box>
+               <Tags tags={post.topics} />
+               <Typography
+                  variant='h6'
+                  component='h1'
+                  marginTop={1}
+                  color='secondary'
+                  sx={{ fontSize: "1rem" }}
+               >
+                  {post.title}
+               </Typography>
+               {post.text && <TextPost text={post.text} />}
+            </Box>
+         </Link>
          <Box display='flex' alignItems='center' marginTop={0.5}>
             <Typography
                variant='caption'

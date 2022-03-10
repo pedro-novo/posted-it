@@ -3,10 +3,11 @@ import { Box, Typography } from "@mui/material";
 import { usePostContext } from "../../context/PostContext";
 import Tags from "../tags/Tags";
 import LikesDislikes from "../likes-and-dislikes/LikesDislikes";
+import PostComments from "./PostComments";
 import { filterCurrentPost } from "../../../utils/filterCurrentPost";
 
 interface PostProps {
-   postID?: string;
+   postID?: string | string[] | undefined;
 }
 
 const Post = ({ postID }: PostProps) => {
@@ -45,6 +46,7 @@ const Post = ({ postID }: PostProps) => {
                votes={currentPost?.votes}
             />
          </Box>
+         <PostComments comments={currentPost?.comments} />
       </Box>
    );
 };

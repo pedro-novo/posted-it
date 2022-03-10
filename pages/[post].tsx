@@ -4,7 +4,7 @@ import { Box, Container, Grid, useMediaQuery, useTheme } from "@mui/material";
 import Sidebar from "../components/sidebar/Sidebar";
 import Post from "../components/posts/single-post-page/Post";
 
-const PostID = () => {
+const PostIDPage = () => {
    const router = useRouter();
    const { post } = router.query;
    const theme = useTheme();
@@ -30,4 +30,4 @@ const PostID = () => {
    );
 };
 
-export default PostID;
+export default PostIDPage;
