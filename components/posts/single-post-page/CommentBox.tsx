@@ -2,45 +2,52 @@ import React, { useState, useEffect } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
 import { updateComments } from "../../../firebase-config";
+import { PostCommentsType, IComment } from "../../../src/types";
+import { Guid } from "guid-ts";
 
 interface CommentBoxProps {
    postID?: string;
-   currentPostComments?: string[];
+   currentPostComments?: PostCommentsType;
 }
 
 const CommentBox = ({ postID, currentPostComments }: CommentBoxProps) => {
-   const [comment, commentSet] = useState<string>();
+   const [commentText, commentTextSet] = useState<string>("");
    const [commentError, commentErrorSet] = useState<boolean>(false);
-   const [commentsArrayToSub, commentsArrayToSubSet] = useState<string[]>([]);
+   const [commentsArrayToSub, commentsArrayToSubSet] =
+      useState<PostCommentsType>(currentPostComments!);
 
    const handleSubmit = (e: any) => {
       e.preventDefault();
       commentErrorSet(false);
 
-      if (!comment) commentErrorSet(true);
+      if (!commentText) commentErrorSet(true);
 
-      if (comment) {
-         commentsArrayToSub.push(comment);
+      if (commentText) {
+         commentsArrayToSub.push({
+            id: Guid.newGuid().toString(),
+            text: commentText,
+         });
+         console.log("commentsArrayToSub after Push:" + commentsArrayToSub);
          updateComments(postID!, commentsArrayToSub);
-         commentSet("");
+         commentTextSet("");
       }
    };
 
    useEffect(() => {
       commentsArrayToSubSet(currentPostComments!);
-   }, [postID]);
+   }, [postID, commentsArrayToSub]);
 
    return (
       <Box marginTop={6} display='block'>
          <form noValidate autoComplete='off' onSubmit={handleSubmit}>
             <TextField
                onChange={(e) => {
-                  commentSet(e.target.value);
+                  commentTextSet(e.target.value);
                }}
                label='Comment'
                variant='outlined'
                placeholder='Comment this post...'
-               value={comment}
+               value={commentText}
                fullWidth
                required
                error={commentError}

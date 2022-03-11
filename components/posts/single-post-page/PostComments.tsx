@@ -1,8 +1,9 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
+import { PostCommentsType } from "../../../src/types";
 
 interface PostCommentsProps {
-   comments?: string[];
+   comments?: PostCommentsType;
 }
 
 const PostComments = ({ comments }: PostCommentsProps) => {
@@ -11,9 +12,9 @@ const PostComments = ({ comments }: PostCommentsProps) => {
          <Box>
             <Typography>Comments:</Typography>
          </Box>
-         {comments?.map((comment, index) => (
+         {comments?.map((comment) => (
             <Box
-               key={index}
+               key={comment.id}
                display='flex'
                alignItems='center'
                marginTop={2}
@@ -22,7 +23,7 @@ const PostComments = ({ comments }: PostCommentsProps) => {
                sx={{ background: "#EFEFEF" }}
             >
                <Typography variant='subtitle1' fontSize='0.9rem'>
-                  {comment}
+                  {comment.text}
                </Typography>
             </Box>
          ))}

@@ -1980,6 +1980,11 @@ graceful-fs@^4.1.2:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.9.tgz#041b05df45755e587a24942279b9d113146e1c96"
   integrity sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==
 
+guid-ts@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/guid-ts/-/guid-ts-1.1.2.tgz#73e3d8fbe3bc47636e1869473f0861b84ae40c8c"
+  integrity sha512-8LKkTis9udlKO23g+wEEmQxrpaq4cj41IQuAjy+NXyrPKSBLXssTVaBXVs+u8jv1nkjUl9fExgrYoqh3Rsd8Bg==
+
 has-bigints@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/has-bigints/-/has-bigints-1.0.1.tgz#64fe6acb020673e3b78db035a5af69aa9d07b113"

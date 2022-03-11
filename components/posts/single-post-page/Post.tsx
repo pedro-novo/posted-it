@@ -6,9 +6,10 @@ import LikesDislikes from "../likes-and-dislikes/LikesDislikes";
 import PostComments from "./PostComments";
 import { filterCurrentPost } from "../../../utils/filterCurrentPost";
 import CommentBox from "./CommentBox";
+import { PostIDType, PostCommentsType } from "../../../src/types";
 
 interface PostProps {
-   postID?: string;
+   postID?: PostIDType;
 }
 
 const Post = ({ postID }: PostProps) => {
@@ -50,10 +51,10 @@ const Post = ({ postID }: PostProps) => {
          <Box>
             <CommentBox
                postID={postID}
-               currentPostComments={currentPost?.comments}
+               currentPostComments={currentPost?.comments as PostCommentsType}
             />
          </Box>
-         <PostComments comments={currentPost?.comments} />
+         <PostComments comments={currentPost?.comments as PostCommentsType} />
       </Box>
    );
 };

@@ -7,18 +7,7 @@ import React, {
    useContext,
 } from "react";
 import { colRef } from "../../firebase-config";
-
-export type PostType = {
-   id: string;
-   title: string;
-   image?: string;
-   link?: string;
-   text?: string;
-   topics: string[];
-   votes: number;
-   comments?: string[];
-   createdAt: FieldValue;
-};
+import { PostCommentsType, PostType } from "../../src/types";
 
 export type PostsType = PostType[];
 
