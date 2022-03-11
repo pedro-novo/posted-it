@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Box, Typography } from "@mui/material";
-import { PostType } from "../../context/PostContext";
+import { PostType } from "../../../src/types";
 import Tags from "../tags/Tags";
 import TextPost from "../text/TextPost";
 import LikesDislikes from "../likes-and-dislikes/LikesDislikes";

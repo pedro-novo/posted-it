@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { PostType } from "../../context/PostContext";
+import { PostType } from "../../../src/types";
 import { Box, Typography } from "@mui/material";
 import Tags from "../tags/Tags";
 import TextPost from "../text/TextPost";
