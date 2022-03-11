@@ -7,8 +7,6 @@ export type PostCommentsType = IComment[];
 
 export type PostIDType = string;
 
-export type CurrentPostCommentsType = PostCommentsType[] | undefined;
-
 export type PostType = {
    id: string;
    title: string;
