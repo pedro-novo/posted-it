@@ -1,3 +1,5 @@
+import { FieldValue } from "firebase/firestore";
+
 export interface IComment {
    id?: string;
    text?: string;
@@ -16,6 +18,7 @@ export type PostType = {
    topics: string[];
    votes: number;
    comments?: PostCommentsType[];
+   createdAt: FieldValue;
 };
 
 export type CommentType = {
