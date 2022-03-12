@@ -6,14 +6,11 @@ import LikesDislikes from "../likes-and-dislikes/LikesDislikes";
 import PostComments from "./PostComments";
 import { filterCurrentPost } from "../../../utils/filterCurrentPost";
 import CommentBox from "./CommentBox";
-import { PostIDType, PostCommentsType } from "../../../src/types";
+import { useCommentContext } from "../../context/CommentsContext";
 
-interface PostProps {
-   postID?: PostIDType;
-}
-
-const Post = ({ postID }: PostProps) => {
+const Post = () => {
    const { posts } = usePostContext();
+   const { postID } = useCommentContext();
    const currentPost = filterCurrentPost(posts, postID);
 
    return (
@@ -49,12 +46,9 @@ const Post = ({ postID }: PostProps) => {
             />
          </Box>
          <Box>
-            <CommentBox
-               postID={postID}
-               currentPostComments={currentPost?.comments as PostCommentsType}
-            />
+            <CommentBox />
          </Box>
-         <PostComments comments={currentPost?.comments as PostCommentsType} />
+         <PostComments />
       </Box>
    );
 };

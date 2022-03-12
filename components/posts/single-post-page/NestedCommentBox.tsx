@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { Box, Button, TextField } from "@mui/material";
-import BeenhereIcon from "@mui/icons-material/Beenhere";
+import { useCommentContext } from "../../context/CommentsContext";
 import { updateComments } from "../../../firebase-dev-config";
 import { Guid } from "guid-ts";
-import { useCommentContext } from "../../context/CommentsContext";
+import { Box, TextField, Button } from "@mui/material";
+import BeenhereIcon from "@mui/icons-material/Beenhere";
 
-const CommentBox = () => {
+interface INestedCommentBox {
+   parentID?: string;
+}
+
+const NestedCommentBox = ({ parentID }: INestedCommentBox) => {
    const { comments, postID } = useCommentContext();
    const [commentText, commentTextSet] = useState<string>("");
    const [commentError, commentErrorSet] = useState<boolean>(false);
@@ -20,7 +24,7 @@ const CommentBox = () => {
          comments.push({
             id: Guid.newGuid().toString(),
             text: commentText,
-            parentID: "",
+            parentID: parentID,
          });
          updateComments(postID!, comments);
          commentTextSet("");
@@ -36,7 +40,7 @@ const CommentBox = () => {
                }}
                label='Comment'
                variant='outlined'
-               placeholder='Comment this post...'
+               placeholder='Answer this comment...'
                value={commentText}
                fullWidth
                required
@@ -55,11 +59,11 @@ const CommentBox = () => {
                endIcon={<BeenhereIcon />}
                sx={{ color: "#EEEDDE" }}
             >
-               Send
+               Answer
             </Button>
          </form>
       </Box>
    );
 };
 
-export default CommentBox;
+export default NestedCommentBox;

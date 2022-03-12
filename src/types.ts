@@ -3,6 +3,7 @@ import { FieldValue } from "firebase/firestore";
 export interface IComment {
    id?: string;
    text?: string;
+   parentID?: string;
 }
 
 export type PostCommentsType = IComment[];
@@ -17,12 +18,8 @@ export type PostType = {
    text?: string;
    topics: string[];
    votes: number;
-   comments?: PostCommentsType[];
+   comments: PostCommentsType;
    createdAt: FieldValue;
 };
 
-export type CommentType = {
-   id: string;
-   text: string;
-   parentID?: string;
-};
+export type PostsType = PostType[];

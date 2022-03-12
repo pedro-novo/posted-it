@@ -8,6 +8,7 @@ import Layout from "../components/Layout";
 import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
 import { PostContextProvider } from "../components/context/PostContext";
+import { CommentsContextProvider } from "../components/context/CommentsContext";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -33,9 +34,11 @@ export default function MyApp(props: MyAppProps) {
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
             <PostContextProvider>
-               <Layout>
-                  <Component {...pageProps} />
-               </Layout>
+               <CommentsContextProvider>
+                  <Layout>
+                     <Component {...pageProps} />
+                  </Layout>
+               </CommentsContextProvider>
             </PostContextProvider>
          </ThemeProvider>
       </CacheProvider>

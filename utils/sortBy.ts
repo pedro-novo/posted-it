@@ -1,5 +1,4 @@
-import { CropPortrait } from "@mui/icons-material";
-import { PostsType } from "../components/context/PostContext";
+import { PostsType } from "../src/types";
 
 type sortedVotes = (
    postsArray: PostsType,

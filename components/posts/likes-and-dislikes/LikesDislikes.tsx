@@ -2,7 +2,7 @@ import React from "react";
 import { Box, IconButton, Typography } from "@mui/material";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
-import { updateUpVotes, updateDownVotes } from "../../../firebase-config";
+import { updateUpVotes, updateDownVotes } from "../../../firebase-dev-config";
 
 interface LikesAndDislikesProps {
    postID?: string;

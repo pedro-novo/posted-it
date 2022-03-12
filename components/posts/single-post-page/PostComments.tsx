@@ -1,32 +1,33 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { PostCommentsType } from "../../../src/types";
+import IndividualPostComment from "./IndividualPostComment";
+import { useCommentContext } from "../../context/CommentsContext";
 
-interface PostCommentsProps {
-   comments?: PostCommentsType;
-}
+const PostComments = () => {
+   const { comments } = useCommentContext();
 
-const PostComments = ({ comments }: PostCommentsProps) => {
    return (
       <Box marginTop={4}>
          <Box>
             <Typography>Comments:</Typography>
          </Box>
-         {comments?.map((comment) => (
-            <Box
-               key={comment.id}
-               display='flex'
-               alignItems='center'
-               marginTop={2}
-               padding={3}
-               borderRadius={2}
-               sx={{ background: "#EFEFEF" }}
-            >
-               <Typography variant='subtitle1' fontSize='0.9rem'>
-                  {comment.text}
-               </Typography>
-            </Box>
-         ))}
+         {comments?.map((comment) => {
+            if (!comment.parentID) {
+               return (
+                  <Box
+                     key={comment.id}
+                     display='flex'
+                     alignItems='center'
+                     marginTop={2}
+                     padding={3}
+                     borderRadius={2}
+                     sx={{ background: "#EFEFEF" }}
+                  >
+                     <IndividualPostComment comment={comment} />
+                  </Box>
+               );
+            }
+         })}
       </Box>
    );
 };
