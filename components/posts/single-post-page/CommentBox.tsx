@@ -27,7 +27,6 @@ const CommentBox = ({ postID, currentPostComments }: CommentBoxProps) => {
             id: Guid.newGuid().toString(),
             text: commentText,
          });
-         console.log("commentsArrayToSub after Push:" + commentsArrayToSub);
          updateComments(postID!, commentsArrayToSub);
          commentTextSet("");
       }
