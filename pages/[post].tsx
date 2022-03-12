@@ -4,18 +4,12 @@ import { useRouter } from "next/router";
 import { Box, Container, Grid, useMediaQuery, useTheme } from "@mui/material";
 import Sidebar from "../components/sidebar/Sidebar";
 import Post from "../components/posts/single-post-page/Post";
-import { useCommentContext } from "../components/context/CommentsContext";
 
 const PostIDPage = () => {
-   const { postIDSet } = useCommentContext();
    const router = useRouter();
    const { post } = router.query;
    const theme = useTheme();
    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
-   useEffect(() => {
-      postIDSet(post as string);
-   }, []);
 
    return (
       <Container>
@@ -28,12 +22,12 @@ const PostIDPage = () => {
          </Head>
          {isMobile ? (
             <Box display='flex' justifyContent='center' alignItems='center'>
-               <Post />
+               <Post postID={post as string} />
             </Box>
          ) : (
             <Grid container spacing={2}>
                <Grid item sm={8}>
-                  <Post />
+                  <Post postID={post as string} />
                </Grid>
                <Grid item sm={4}>
                   <Sidebar />

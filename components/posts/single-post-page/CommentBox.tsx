@@ -3,10 +3,9 @@ import { Box, Button, TextField } from "@mui/material";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
 import { updateComments } from "../../../firebase-dev-config";
 import { Guid } from "guid-ts";
-import { useCommentContext } from "../../context/CommentsContext";
+import { ICommentBoxProps } from "../../../src/types";
 
-const CommentBox = () => {
-   const { comments, postID } = useCommentContext();
+const CommentBox = ({ postID, comments }: ICommentBoxProps) => {
    const [commentText, commentTextSet] = useState<string>("");
    const [commentError, commentErrorSet] = useState<boolean>(false);
 
@@ -17,12 +16,12 @@ const CommentBox = () => {
       if (!commentText) commentErrorSet(true);
 
       if (commentText) {
-         comments.push({
+         comments?.push({
             id: Guid.newGuid().toString(),
             text: commentText,
             parentID: "",
          });
-         updateComments(postID!, comments);
+         updateComments(postID!, comments!);
          commentTextSet("");
       }
    };

@@ -34,11 +34,9 @@ export default function MyApp(props: MyAppProps) {
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
             <PostContextProvider>
-               <CommentsContextProvider>
-                  <Layout>
-                     <Component {...pageProps} />
-                  </Layout>
-               </CommentsContextProvider>
+               <Layout>
+                  <Component {...pageProps} />
+               </Layout>
             </PostContextProvider>
          </ThemeProvider>
       </CacheProvider>

@@ -1,33 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import IndividualPostComment from "./IndividualPostComment";
-import { useCommentContext } from "../../context/CommentsContext";
+import { IPostCommentsProps } from "../../../src/types";
+import { filterNestedComments } from "../../../utils/filterNestedComments";
+import { filterMainComments } from "../../../utils/filterMainPostComments";
+import { PostCommentsType, IComment } from "../../../src/types";
 
-const PostComments = () => {
-   const { comments } = useCommentContext();
+const PostComments = ({ postID, comments }: IPostCommentsProps) => {
+   const [mainPostComments, mainPostCommentsSet] = useState<PostCommentsType>(
+      []
+   );
+   const [commentsWithParentID, commentsWithParentIDSet] = useState<
+      (IComment | undefined)[]
+   >([]);
+
+   useEffect(() => {
+      commentsWithParentIDSet(filterNestedComments(comments!));
+      commentsWithParentIDSet(filterMainComments(comments!));
+   }, []);
 
    return (
       <Box marginTop={4}>
          <Box>
             <Typography>Comments:</Typography>
          </Box>
-         {comments?.map((comment) => {
-            if (!comment.parentID) {
-               return (
-                  <Box
-                     key={comment.id}
-                     display='flex'
-                     alignItems='center'
-                     marginTop={2}
-                     padding={3}
-                     borderRadius={2}
-                     sx={{ background: "#EFEFEF" }}
-                  >
-                     <IndividualPostComment comment={comment} />
-                  </Box>
-               );
-            }
-         })}
+         {mainPostComments?.map((comment) => (
+            <Box
+               key={comment.id}
+               display='flex'
+               alignItems='center'
+               marginTop={2}
+               padding={3}
+               borderRadius={2}
+               sx={{ background: "#EFEFEF" }}
+            >
+               <IndividualPostComment
+                  postID={postID}
+                  comments={comments}
+                  comment={comment}
+               />
+            </Box>
+         ))}
       </Box>
    );
 };

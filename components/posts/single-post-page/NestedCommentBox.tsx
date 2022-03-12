@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { useCommentContext } from "../../context/CommentsContext";
 import { updateComments } from "../../../firebase-dev-config";
 import { Guid } from "guid-ts";
 import { Box, TextField, Button } from "@mui/material";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
+import { INestedCommentBoxProps } from "../../../src/types";
 
-interface INestedCommentBox {
-   parentID?: string;
-}
-
-const NestedCommentBox = ({ parentID }: INestedCommentBox) => {
-   const { comments, postID } = useCommentContext();
+const NestedCommentBox = ({
+   postID,
+   parentID,
+   comments,
+}: INestedCommentBoxProps) => {
    const [commentText, commentTextSet] = useState<string>("");
    const [commentError, commentErrorSet] = useState<boolean>(false);
 
@@ -21,12 +20,12 @@ const NestedCommentBox = ({ parentID }: INestedCommentBox) => {
       if (!commentText) commentErrorSet(true);
 
       if (commentText) {
-         comments.push({
+         comments?.push({
             id: Guid.newGuid().toString(),
             text: commentText,
             parentID: parentID,
          });
-         updateComments(postID!, comments);
+         updateComments(postID!, comments!);
          commentTextSet("");
       }
    };

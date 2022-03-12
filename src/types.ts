@@ -23,3 +23,29 @@ export type PostType = {
 };
 
 export type PostsType = PostType[];
+
+export interface IPostProps {
+   postID: string;
+}
+
+export interface IPostCommentsProps {
+   postID?: string;
+   comments?: PostCommentsType;
+}
+
+export interface ICommentBoxProps {
+   postID: string;
+   comments?: PostCommentsType;
+}
+
+export interface IndividualPostCommentProps {
+   postID?: string;
+   comment: IComment;
+   comments?: PostCommentsType;
+}
+
+export interface INestedCommentBoxProps {
+   postID?: string;
+   parentID?: string;
+   comments?: PostCommentsType;
+}
