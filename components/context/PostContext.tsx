@@ -16,20 +16,15 @@ type PostContextProviderProps = {
 type PostContextType = {
    posts: PostsType;
    postsSet: React.Dispatch<SetStateAction<PostsType>>;
-   recentPosts: PostsType;
-   recentPostsSet: React.Dispatch<SetStateAction<PostsType>>;
 };
 
 const PostContext = createContext<PostContextType>({
    posts: [],
    postsSet: () => undefined,
-   recentPosts: [],
-   recentPostsSet: () => undefined,
 });
 
 export const PostContextProvider = ({ children }: PostContextProviderProps) => {
    const [posts, postsSet] = useState<PostsType>([]);
-   const [recentPosts, recentPostsSet] = useState<PostsType>([]);
 
    useEffect(() => {
       onSnapshot(colRef, (snapshot) => {
@@ -46,8 +41,6 @@ export const PostContextProvider = ({ children }: PostContextProviderProps) => {
          value={{
             posts,
             postsSet,
-            recentPosts,
-            recentPostsSet,
          }}
       >
          {children}

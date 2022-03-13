@@ -7,17 +7,8 @@ import { filterMainComments } from "../../../utils/filterMainPostComments";
 import { PostCommentsType, IComment } from "../../../src/types";
 
 const PostComments = ({ postID, comments }: IPostCommentsProps) => {
-   const [mainPostComments, mainPostCommentsSet] = useState<PostCommentsType>(
-      []
-   );
-   const [commentsWithParentID, commentsWithParentIDSet] = useState<
-      (IComment | undefined)[]
-   >([]);
-
-   useEffect(() => {
-      commentsWithParentIDSet(filterNestedComments(comments!));
-      commentsWithParentIDSet(filterMainComments(comments!));
-   }, []);
+   const mainPostComments = filterMainComments(comments!);
+   const commentsWithParentID = filterNestedComments(comments!);
 
    return (
       <Box marginTop={4}>

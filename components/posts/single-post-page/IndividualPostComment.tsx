@@ -4,9 +4,9 @@ import { IComment, IndividualPostCommentProps } from "../../../src/types";
 import NestedCommentBox from "./NestedCommentBox";
 
 const IndividualPostComment = ({
+   postID,
    comments,
    comment,
-   postID,
 }: IndividualPostCommentProps) => {
    const [displayCommentBox, displayCommentBoxSet] = useState(false);
 
@@ -28,6 +28,7 @@ const IndividualPostComment = ({
                comments={comments}
             />
          )}
+         {}
       </Box>
    );
 };

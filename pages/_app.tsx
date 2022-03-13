@@ -8,7 +8,6 @@ import Layout from "../components/Layout";
 import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
 import { PostContextProvider } from "../components/context/PostContext";
-import { CommentsContextProvider } from "../components/context/CommentsContext";
 
 const clientSideEmotionCache = createEmotionCache();
 
