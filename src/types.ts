@@ -42,6 +42,7 @@ export interface IndividualPostCommentProps {
    postID?: string;
    comment: IComment;
    comments?: PostCommentsType;
+   commentsWithParentID: PostCommentsType;
 }
 
 export interface INestedCommentBoxProps {

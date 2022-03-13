@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Box, Typography } from "@mui/material";
 import { usePostContext } from "../../context/PostContext";
 import Tags from "../tags/Tags";
@@ -6,16 +6,11 @@ import LikesDislikes from "../likes-and-dislikes/LikesDislikes";
 import PostComments from "./PostComments";
 import { filterCurrentPost } from "../../../utils/filterCurrentPost";
 import CommentBox from "./CommentBox";
-import { useCommentContext } from "../../context/CommentsContext";
-import { IPostProps, PostType } from "../../../src/types";
+import { IPostProps } from "../../../src/types";
 
 const Post = ({ postID }: IPostProps) => {
    const { posts } = usePostContext();
-   const [currentPost, currentPostSet] = useState<PostType>();
-
-   useEffect(() => {
-      currentPostSet(filterCurrentPost(posts, postID));
-   }, []);
+   const currentPost = filterCurrentPost(posts, postID);
 
    return (
       <Box

@@ -4,7 +4,6 @@ import IndividualPostComment from "./IndividualPostComment";
 import { IPostCommentsProps } from "../../../src/types";
 import { filterNestedComments } from "../../../utils/filterNestedComments";
 import { filterMainComments } from "../../../utils/filterMainPostComments";
-import { PostCommentsType, IComment } from "../../../src/types";
 
 const PostComments = ({ postID, comments }: IPostCommentsProps) => {
    const mainPostComments = filterMainComments(comments!);
@@ -29,6 +28,7 @@ const PostComments = ({ postID, comments }: IPostCommentsProps) => {
                   postID={postID}
                   comments={comments}
                   comment={comment}
+                  commentsWithParentID={commentsWithParentID}
                />
             </Box>
          ))}

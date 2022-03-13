@@ -7,6 +7,7 @@ const IndividualPostComment = ({
    postID,
    comments,
    comment,
+   commentsWithParentID,
 }: IndividualPostCommentProps) => {
    const [displayCommentBox, displayCommentBoxSet] = useState(false);
 
@@ -28,7 +29,23 @@ const IndividualPostComment = ({
                comments={comments}
             />
          )}
-         {}
+         {commentsWithParentID.map((nestedComment) => {
+            if (comment.id === nestedComment.parentID) {
+               return (
+                  <Box
+                     key={nestedComment.id}
+                     display='flex'
+                     alignItems='center'
+                     marginTop={2}
+                     padding={3}
+                     borderRadius={2}
+                     sx={{ background: "#FFF" }}
+                  >
+                     {nestedComment.text}
+                  </Box>
+               );
+            }
+         })}
       </Box>
    );
 };
