@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Box, Typography } from "@mui/material";
 import IndividualPostComment from "./IndividualPostComment";
 import { IPostCommentsProps } from "../../../src/types";

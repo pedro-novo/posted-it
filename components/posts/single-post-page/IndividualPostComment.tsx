@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
-import { IComment, IndividualPostCommentProps } from "../../../src/types";
+import { IndividualPostCommentProps } from "../../../src/types";
 import NestedCommentBox from "./NestedCommentBox";
 
 const IndividualPostComment = ({

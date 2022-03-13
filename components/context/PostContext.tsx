@@ -6,7 +6,7 @@ import React, {
    SetStateAction,
    useContext,
 } from "react";
-import { colRef } from "../../firebase-dev-config";
+import { colRef } from "../../firebase-config";
 import { PostType, PostsType } from "../../src/types";
 
 type PostContextProviderProps = {

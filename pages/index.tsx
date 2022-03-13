@@ -4,7 +4,6 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { Box, Container, useTheme, useMediaQuery, Grid } from "@mui/material";
 import Body from "../components/Body";
-
 const Home: NextPage = () => {
    const theme = useTheme();
    const isMobile = useMediaQuery(theme.breakpoints.down("md"));

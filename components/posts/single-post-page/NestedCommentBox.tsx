@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { updateComments } from "../../../firebase-dev-config";
+import { updateComments } from "../../../firebase-config";
 import { Guid } from "guid-ts";
 import { Box, TextField, Button } from "@mui/material";
 import BeenhereIcon from "@mui/icons-material/Beenhere";
