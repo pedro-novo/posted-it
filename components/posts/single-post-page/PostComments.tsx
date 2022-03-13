@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
-import { PostCommentsType } from "../../../src/types";
+import IndividualPostComment from "./IndividualPostComment";
+import { IPostCommentsProps } from "../../../src/types";
+import { filterNestedComments } from "../../../utils/filterNestedComments";
+import { filterMainComments } from "../../../utils/filterMainPostComments";
 
-interface PostCommentsProps {
-   comments?: PostCommentsType;
-}
+const PostComments = ({ postID, comments }: IPostCommentsProps) => {
+   const mainPostComments = filterMainComments(comments!);
+   const commentsWithParentID = filterNestedComments(comments!);
 
-const PostComments = ({ comments }: PostCommentsProps) => {
    return (
       <Box marginTop={4}>
          <Box>
             <Typography>Comments:</Typography>
          </Box>
-         {comments?.map((comment) => (
+         {mainPostComments?.map((comment) => (
             <Box
                key={comment.id}
                display='flex'
@@ -22,9 +24,12 @@ const PostComments = ({ comments }: PostCommentsProps) => {
                borderRadius={2}
                sx={{ background: "#EFEFEF" }}
             >
-               <Typography variant='subtitle1' fontSize='0.9rem'>
-                  {comment.text}
-               </Typography>
+               <IndividualPostComment
+                  postID={postID}
+                  comments={comments}
+                  comment={comment}
+                  commentsWithParentID={commentsWithParentID}
+               />
             </Box>
          ))}
       </Box>

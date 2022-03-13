@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { Box, Button, TextField } from "@mui/material";
-import BeenhereIcon from "@mui/icons-material/Beenhere";
 import { updateComments } from "../../../firebase-dev-config";
 import { Guid } from "guid-ts";
-import { ICommentBoxProps } from "../../../src/types";
+import { Box, TextField, Button } from "@mui/material";
+import BeenhereIcon from "@mui/icons-material/Beenhere";
+import { INestedCommentBoxProps } from "../../../src/types";
 
-const CommentBox = ({ postID, comments }: ICommentBoxProps) => {
+const NestedCommentBox = ({
+   postID,
+   parentID,
+   comments,
+}: INestedCommentBoxProps) => {
    const [commentText, commentTextSet] = useState<string>("");
    const [commentError, commentErrorSet] = useState<boolean>(false);
 
@@ -19,7 +23,7 @@ const CommentBox = ({ postID, comments }: ICommentBoxProps) => {
          comments?.push({
             id: Guid.newGuid().toString(),
             text: commentText,
-            parentID: "",
+            parentID: parentID,
          });
          updateComments(postID!, comments!);
          commentTextSet("");
@@ -35,7 +39,7 @@ const CommentBox = ({ postID, comments }: ICommentBoxProps) => {
                }}
                label='Comment'
                variant='outlined'
-               placeholder='Comment this post...'
+               placeholder='Answer this comment...'
                value={commentText}
                fullWidth
                required
@@ -54,11 +58,11 @@ const CommentBox = ({ postID, comments }: ICommentBoxProps) => {
                endIcon={<BeenhereIcon />}
                sx={{ color: "#EEEDDE" }}
             >
-               Send
+               Answer
             </Button>
          </form>
       </Box>
    );
 };
 
-export default CommentBox;
+export default NestedCommentBox;

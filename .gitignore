@@ -21,6 +21,7 @@
 
 #firebase
 /firebase-config.ts
+/firebase-dev-config.ts
 
 # debug
 npm-debug.log*

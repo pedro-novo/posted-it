@@ -1,4 +1,4 @@
-import { FieldValue, onSnapshot } from "firebase/firestore";
+import { onSnapshot } from "firebase/firestore";
 import React, {
    useState,
    useEffect,
@@ -6,10 +6,8 @@ import React, {
    SetStateAction,
    useContext,
 } from "react";
-import { colRef } from "../../firebase-config";
-import { PostCommentsType, PostType } from "../../src/types";
-
-export type PostsType = PostType[];
+import { colRef } from "../../firebase-dev-config";
+import { PostType, PostsType } from "../../src/types";
 
 type PostContextProviderProps = {
    children: JSX.Element;
@@ -18,20 +16,15 @@ type PostContextProviderProps = {
 type PostContextType = {
    posts: PostsType;
    postsSet: React.Dispatch<SetStateAction<PostsType>>;
-   recentPosts: PostsType;
-   recentPostsSet: React.Dispatch<SetStateAction<PostsType>>;
 };
 
 const PostContext = createContext<PostContextType>({
    posts: [],
    postsSet: () => undefined,
-   recentPosts: [],
-   recentPostsSet: () => undefined,
 });
 
 export const PostContextProvider = ({ children }: PostContextProviderProps) => {
    const [posts, postsSet] = useState<PostsType>([]);
-   const [recentPosts, recentPostsSet] = useState<PostsType>([]);
 
    useEffect(() => {
       onSnapshot(colRef, (snapshot) => {
@@ -45,7 +38,10 @@ export const PostContextProvider = ({ children }: PostContextProviderProps) => {
 
    return (
       <PostContext.Provider
-         value={{ posts, postsSet, recentPosts, recentPostsSet }}
+         value={{
+            posts,
+            postsSet,
+         }}
       >
          {children}
       </PostContext.Provider>

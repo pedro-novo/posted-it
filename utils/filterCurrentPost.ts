@@ -1,8 +1,10 @@
-import { PostsType } from "../components/context/PostContext";
+import { PostsType, PostType } from "../src/types";
 
-export const filterCurrentPost = (
+type FilterCurrentPostType = (
    posts: PostsType,
-   id: string | string[] | undefined
-) => {
+   id: string
+) => PostType | undefined;
+
+export const filterCurrentPost: FilterCurrentPostType = (posts, id) => {
    return posts.find((post) => post.id == id);
 };

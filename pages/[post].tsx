@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { Box, Container, Grid, useMediaQuery, useTheme } from "@mui/material";
