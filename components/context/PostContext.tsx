@@ -16,15 +16,20 @@ type PostContextProviderProps = {
 type PostContextType = {
    posts: PostsType;
    postsSet: React.Dispatch<SetStateAction<PostsType>>;
+   filteredPosts: PostsType;
+   filteredPostsSet: React.Dispatch<SetStateAction<PostsType>>;
 };
 
 const PostContext = createContext<PostContextType>({
    posts: [],
    postsSet: () => undefined,
+   filteredPosts: [],
+   filteredPostsSet: () => undefined,
 });
 
 export const PostContextProvider = ({ children }: PostContextProviderProps) => {
    const [posts, postsSet] = useState<PostsType>([]);
+   const [filteredPosts, filteredPostsSet] = useState<PostsType>([]);
 
    useEffect(() => {
       onSnapshot(colRef, (snapshot) => {
@@ -33,6 +38,7 @@ export const PostContextProvider = ({ children }: PostContextProviderProps) => {
             array.push({ ...doc.data(), id: doc.id } as PostType);
          });
          postsSet(array);
+         filteredPostsSet(array);
       });
    }, []);
 
@@ -41,6 +47,8 @@ export const PostContextProvider = ({ children }: PostContextProviderProps) => {
          value={{
             posts,
             postsSet,
+            filteredPosts,
+            filteredPostsSet,
          }}
       >
          {children}

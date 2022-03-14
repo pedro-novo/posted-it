@@ -20,9 +20,9 @@ const PostCard = ({ post }: PostCardProps) => {
          borderRadius={1}
          sx={{ border: "1px solid #8F8F8F", background: "#79B4B7" }}
       >
+         <Tags tags={post.topics} />
          <Link href={`/${post.id}`}>
             <Box>
-               <Tags tags={post.topics} />
                <Typography
                   variant='h6'
                   component='h1'
