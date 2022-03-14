@@ -22,10 +22,10 @@ const PostCardWithMedia = ({ post }: PostCardWithMediaProps) => {
          sx={{ border: "1px solid #8F8F8F", background: "#79B4B7" }}
       >
          <Box>
+            <Tags tags={post.topics} />
             <Link href={`/${post.id}`}>
                <Box display='flex'>
                   <Box flexGrow={1}>
-                     <Tags tags={post.topics} />
                      <Typography
                         variant='h6'
                         component='h1'
