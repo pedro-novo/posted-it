@@ -1,4 +1,4 @@
-import { PostsType, PostType, PostCommentsType } from "../src/types";
+import { PostsType, PostCommentsType } from "../src/types";
 
 type grabCommentsFromPostID = (
    posts: PostsType,

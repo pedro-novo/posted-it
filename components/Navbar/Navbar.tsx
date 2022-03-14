@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { useRouter } from "next/router";
 import { Divider, Box, useTheme, useMediaQuery } from "@mui/material";
 import NavBarDesktopView from "./NavBarDesktopView";
 import NavBarMobileView from "./NavBarMobileView";
