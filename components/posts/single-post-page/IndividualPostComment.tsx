@@ -41,7 +41,12 @@ const IndividualPostComment = ({
                      borderRadius={2}
                      sx={{ background: "#FFF" }}
                   >
-                     {nestedComment.text}
+                     <IndividualPostComment
+                        postID={postID}
+                        comments={comments}
+                        comment={nestedComment}
+                        commentsWithParentID={commentsWithParentID}
+                     />
                   </Box>
                );
             }
